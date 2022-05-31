@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `gb`,
@@ -6,10 +10,11 @@ module.exports = {
   plugins: [{
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": "7Ut961I5Ev0vx4hNykhYqykTLLX3haXXfRfBrZCprA0",
-      "spaceId": "okuxxf6faa88"
+      "accessToken": process.env.GATSBY_APP_CONTENT_DELIVERY_API_KEY,
+      "spaceId": process.env.GATSBY_APP_SPACE_ID
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
+  }, "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
